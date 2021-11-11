@@ -9,6 +9,9 @@ footer{
     margin-top: 40px;
     padding: 20px;
     background: #56CCF2;
+    min-height: 80px;
+    width: 80%;
+    margin: 0 auto;
     
 }
 
