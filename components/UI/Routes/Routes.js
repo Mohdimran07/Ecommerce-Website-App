@@ -2,6 +2,7 @@ import React from "react";
 import Products from "../Products/Products";
 import Cart from "../Cart/Cart";
 import { Switch, Route } from "react-router-dom";
+import About from "../About/About";
 
 const Routes = ({
   productItems,
@@ -24,6 +25,9 @@ const Routes = ({
             handleAddProduct={handleAddProduct}
             handleRemoveProduct={handleRemoveProduct}
           />
+        </Route>
+        <Route path="/about" exact>
+           <About />
         </Route>
       </Switch>
     </div>
