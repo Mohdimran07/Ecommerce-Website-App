@@ -50,8 +50,8 @@ function App() {
           <Routes
             productItems={productItems}
             cartItems={cartItems}
-            // handleAddProduct={handleAddProduct}
-            // handleRemoveProduct={handleRemoveProduct}
+            handleAddProduct={handleAddProduct}
+            handleRemoveProduct={handleRemoveProduct}
           />
         </Router>
       </div>
