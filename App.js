@@ -7,9 +7,11 @@ import Footer from "./components/Footer/Footer";
 import Routes from "./components/UI/Routes/Routes";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useState } from "react";
+import homedata from "./components/Data/HomeItems";
 
 function App() {
   const { productItems } = data;
+  const {prodItems} = homedata;
   const [cartItems, setCartItems] = useState([]);
 
   const handleAddProduct = (product) => {
@@ -52,6 +54,7 @@ function App() {
             cartItems={cartItems}
             handleAddProduct={handleAddProduct}
             handleRemoveProduct={handleRemoveProduct}
+            prodItems={prodItems}
           />
         </Router>
       </div>
