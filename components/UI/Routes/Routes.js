@@ -4,6 +4,7 @@ import Cart from "../Cart/Cart";
 import { Switch, Route } from "react-router-dom";
 import About from "../About/About";
 import Home from "../Home/Home";
+import Contact from "../Contact/Contact";
 
 const Routes = ({
   productItems,
@@ -11,6 +12,7 @@ const Routes = ({
   handleAddProduct,
   handleRemoveProduct,
   prodItems,
+  
 }) => {
   return (
     <div>
@@ -30,6 +32,11 @@ const Routes = ({
         </Route>
         <Route path="/about" exact>
            <About />
+        </Route>
+        <Route path="/contact">
+          <Contact 
+             
+          />
         </Route>
         <Route path="/home" exact>
             <Home 

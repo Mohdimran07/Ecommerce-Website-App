@@ -16,6 +16,11 @@ const Header = ({cartItems}) => {
             <Link to="/items">Store</Link>
           </li>
         </ul>
+        <ul>
+          <li>
+            <Link to="/contact">Contact US</Link>
+          </li>
+        </ul>
         <ul >
           <li>
             <Link to="/about">About</Link>

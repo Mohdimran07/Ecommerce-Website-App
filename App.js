@@ -2,6 +2,7 @@
 import "./App.css";
 import Header from "./components/UI/Header/Header";
 
+
 import data from "./components/Data/Itemlist";
 import Footer from "./components/Footer/Footer";
 import Routes from "./components/UI/Routes/Routes";
@@ -13,6 +14,7 @@ function App() {
   const { productItems } = data;
   const {prodItems} = homedata;
   const [cartItems, setCartItems] = useState([]);
+  
 
   const handleAddProduct = (product) => {
     const ProductExist = cartItems.find((item) => item.id === product.id);
@@ -43,6 +45,7 @@ function App() {
       );
     }
   };
+ 
 
   return (
     <div>
@@ -55,6 +58,7 @@ function App() {
             handleAddProduct={handleAddProduct}
             handleRemoveProduct={handleRemoveProduct}
             prodItems={prodItems}
+            
           />
         </Router>
       </div>

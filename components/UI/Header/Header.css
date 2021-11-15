@@ -3,7 +3,7 @@ header{
     width: 80%;
     padding: 12px;
     min-height:80px ;
-    display: flex;
+    display: flexbox;
     margin: 0 auto;
     align-items: center;
 }
