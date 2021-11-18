@@ -9,6 +9,7 @@ import Routes from "./components/UI/Routes/Routes";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useState } from "react";
 import homedata from "./components/Data/HomeItems";
+import { AuthContextProvider } from "./Store/auth-context";
 
 function App() {
   const { productItems } = data;
@@ -50,6 +51,7 @@ function App() {
   return (
     <div>
       <div>
+        <AuthContextProvider>
         <Router>
           <Header cartItems={cartItems}/>
           <Routes
@@ -61,6 +63,7 @@ function App() {
             
           />
         </Router>
+        </AuthContextProvider>
       </div>
       <Footer />
     </div>

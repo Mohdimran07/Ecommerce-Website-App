@@ -5,6 +5,9 @@ import { Switch, Route } from "react-router-dom";
 import About from "../About/About";
 import Home from "../Home/Home";
 import Contact from "../Contact/Contact";
+import Login from "../Login/Login";
+import { useContext } from "react";
+import AuthContext from "../../../Store/auth-context";
 
 const Routes = ({
   productItems,
@@ -14,15 +17,20 @@ const Routes = ({
   prodItems,
   
 }) => {
+  const authCtx = useContext(AuthContext);
+
+  const isLoggedIn = authCtx.isLoggedIn;
   return (
     <div>
       <Switch>
+      {isLoggedIn && (
         <Route path="/items" exact>
           <Products
             productItems={productItems}
             handleAddProduct={handleAddProduct}
           />
         </Route>
+        )}
         <Route path="/cart" exact>
           <Cart
             cartItems={cartItems}
@@ -30,6 +38,10 @@ const Routes = ({
             handleRemoveProduct={handleRemoveProduct}
           />
         </Route>
+        {!isLoggedIn && (
+        <Route path="/login" exact>
+          <Login />
+        </Route> )}
         <Route path="/about" exact>
            <About />
         </Route>

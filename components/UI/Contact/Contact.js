@@ -38,15 +38,7 @@ const Contact = () => {
         alert("Fill the details")
     }
 
-    // could add validation here...
-
-    // const Details = {
-    //   name: nameRef.current.value,
-    //   email: emailRef.current.value,
-    //   phoneNo: phoneNoRef.current.value,
-    // };
-
-    // props.submitHandler(Details);
+    
   };
 
   return (
