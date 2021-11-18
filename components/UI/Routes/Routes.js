@@ -1,7 +1,7 @@
 import React from "react";
 import Products from "../Products/Products";
 import Cart from "../Cart/Cart";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import About from "../About/About";
 import Home from "../Home/Home";
 import Contact from "../Contact/Contact";
@@ -23,14 +23,17 @@ const Routes = ({
   return (
     <div>
       <Switch>
-      {isLoggedIn && (
+      
         <Route path="/items" exact>
+        {isLoggedIn && (
           <Products
             productItems={productItems}
             handleAddProduct={handleAddProduct}
           />
+          )}
+          {!isLoggedIn && <Redirect to='/login' />}
         </Route>
-        )}
+       
         <Route path="/cart" exact>
           <Cart
             cartItems={cartItems}
@@ -42,6 +45,7 @@ const Routes = ({
         <Route path="/login" exact>
           <Login />
         </Route> )}
+        
         <Route path="/about" exact>
            <About />
         </Route>
@@ -54,6 +58,9 @@ const Routes = ({
             <Home 
             prodItems={prodItems}
             />
+        </Route>
+        <Route path="*">
+          <Redirect to='/login' />
         </Route>
       </Switch>
     </div>
