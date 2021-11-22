@@ -45,8 +45,9 @@ const Login = () => {
         }
       })
       .then((data) => {
-          AuthCtx.login(data.idToken);
+          AuthCtx.login(data.idToken, data.email);
           history.replace('/items')
+          console.log(data);
       }).catch((err) => {
           alert(err.message)
       })

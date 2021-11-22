@@ -1,12 +1,38 @@
-import React from "react";
-import './Cart.css';
+import React, { useEffect, useState } from "react";
+import "./Cart.css";
+import axios from "axios";
 
-const Cart = ({ cartItems, handleAddProduct, handleRemoveProduct }) => {
-    const totalPrice = cartItems.reduce((price, item) => price + item.quantity * item.price, 0)
+const Cart = ({  handleRemoveProduct }) => {
+  const [cartItems, setCartItems] = useState([]);
+
+  // const totalPrice = cartItems.reduce(
+  //   (price, item) => price + item.quantity * item.price,
+  //   0
+  // );
+
+  useEffect(() => {
+    let String = localStorage.getItem("userId");
+
+    console.log(String);
+    let email = String.replace(/[&,+()$~%@.'":*?<>{}]/g, "");
+    console.log(email);
+   
+
+    axios
+      .get(
+        `https://crudcrud.com/api/77b4626e29884cd2968273ffdd50ef49/Cart${email}`
+      )
+      .then((response) => {
+        console.log(response);
+        setCartItems(response.data)
+
+      });
+  }, []);
+
   return (
     <div className="cart-items">
       <div className="cart-items-header">Cart Items</div>
-      {cartItems.length === 0 && (
+      { cartItems.length === 0 && (
         <div className="empty-cart">No items are Added.</div>
       )}
 
@@ -16,19 +42,20 @@ const Cart = ({ cartItems, handleAddProduct, handleRemoveProduct }) => {
             <img className="item-image" src={item.image} alt={item.title} />
             <div className="item-name">{item.title}</div>
             <div className="item-function">
-              <button className="item-add" 
-              onClick={() => handleAddProduct(item)}>
-                +
+              <button
+                className="item-remove"
+                onClick={() => handleRemoveProduct(item)}
+              >
+                Remove
               </button>
-              <button className="item-remove" onClick={() => handleRemoveProduct(item)}>-</button>
             </div>
-            <div className="item-price">{item.quantity} * ${item.price}</div>
+            <div className="item-price">
+              {item.quantity} ${item.price}
+            </div>
           </div>
         ))}
       </div>
-      <div className="total-price-name ">Total Price
-      <div className="total-price">${totalPrice}</div>
-      </div>
+     
     </div>
   );
 };

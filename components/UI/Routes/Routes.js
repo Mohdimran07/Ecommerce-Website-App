@@ -9,15 +9,21 @@ import Login from "../Login/Login";
 import { useContext } from "react";
 import AuthContext from "../../../Store/auth-context";
 
+
+
 const Routes = ({
   productItems,
   cartItems,
   handleAddProduct,
   handleRemoveProduct,
   prodItems,
-  
+  getProduct
 }) => {
   const authCtx = useContext(AuthContext);
+ 
+
+
+  
 
   const isLoggedIn = authCtx.isLoggedIn;
   return (
@@ -36,10 +42,15 @@ const Routes = ({
        
         <Route path="/cart" exact>
           <Cart
-            cartItems={cartItems}
-            handleAddProduct={handleAddProduct}
+            
+            // handleAddProduct={handleAddProduct}
+            
             handleRemoveProduct={handleRemoveProduct}
+            
+          
           />
+        
+      
         </Route>
         {!isLoggedIn && (
         <Route path="/login" exact>

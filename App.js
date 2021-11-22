@@ -1,6 +1,7 @@
 // import Products from "./components/Header/Products";
 import "./App.css";
 import Header from "./components/UI/Header/Header";
+import axios from 'axios';
 
 
 import data from "./components/Data/Itemlist";
@@ -19,6 +20,17 @@ function App() {
 
   const handleAddProduct = (product) => {
     const ProductExist = cartItems.find((item) => item.id === product.id);
+
+    let String = localStorage.getItem("userId");
+    console.log(String);
+    let email = String.replace(/[&,+()$~%@.'":*?<>{}]/g, '');
+   axios.post(`https://crudcrud.com/api/77b4626e29884cd2968273ffdd50ef49/Cart${email}`, {
+     title: product.title,
+     price: product.price,
+     image : product.image,
+   } )
+
+
     if (ProductExist) {
       setCartItems(
         cartItems.map((item) =>
@@ -30,7 +42,12 @@ function App() {
     } else {
       setCartItems([...cartItems, { ...product, quantity: 1 }]);
     }
+    console.log(product);
+    
+   
   };
+ 
+    
 
   const handleRemoveProduct = (product) => {
     const ProductExist = cartItems.find((item) => item.id === product.id);
@@ -46,7 +63,7 @@ function App() {
       );
     }
   };
- 
+  
 
   return (
     <div>
