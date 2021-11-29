@@ -5,10 +5,7 @@ import axios from "axios";
 const Cart = ({  handleRemoveProduct }) => {
   const [cartItems, setCartItems] = useState([]);
 
-  // const totalPrice = cartItems.reduce(
-  //   (price, item) => price + item.quantity * item.price,
-  //   0
-  // );
+  
 
   useEffect(() => {
     let String = localStorage.getItem("userId");
